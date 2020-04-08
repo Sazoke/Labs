@@ -150,10 +150,12 @@
     <ClCompile Include="Matrix.cpp" />
     <ClCompile Include="Matrix3x3.cpp" />
     <ClCompile Include="MatrixNxN.cpp" />
+    <ClCompile Include="MyVector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrix3x3.h" />
     <ClInclude Include="MatrixNxN.h" />
+    <ClInclude Include="MyVector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

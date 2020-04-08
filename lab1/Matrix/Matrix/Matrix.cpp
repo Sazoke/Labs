@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Matrix3x3.h"
 #include "MatrixNxN.h"
-#include <vector>
+#include "MyVector.h"
 
 using namespace std;
 
@@ -12,8 +12,8 @@ void ShowMatrix3x3();
 void ShowMatrixNxN();
 void ShowRemove();
 void ShowLast5Element();
-void RemoveDubl(vector<int>*);
-int FindLast5Element(vector<int>*);
+void RemoveDubl(MyVector*);
+int FindLast5Element(MyVector*);
 
 int main()
 {
@@ -72,56 +72,77 @@ void ShowMatrixNxN() {
 }
 
 void ShowRemove() {
-	vector<int> vec = vector<int>();
+	MyVector vec = MyVector();
 	for (int i = 0; i < 5; i++)
 	{
-		vec.push_back(1);
-		vec.push_back(i);
+		vec.AddValue(1);
+		vec.AddValue(i);
 	}
-	for (int i = 0; i < vec.size(); i++)
-		cout << vec[i] << ' ';
+	MyVector::Itterator* it = vec.head;
+	for (int i = 0; i < vec.count; i++)
+	{
+		if (i != 0)
+			it = it->next;
+		cout << it->value << ' ';
+	}
 	cout << '\n';
 	RemoveDubl(&vec);
-	for (int i = 0; i < vec.size(); i++)
-		cout << vec[i] << ' ';
+	MyVector::Itterator& itRes = *vec.head;
+	for (int i = 0; i < vec.count; i++)
+	{
+		if (i != 0)
+			itRes = *itRes.next;
+		cout << itRes.value << ' ';
+	}
 }
 
-void RemoveDubl(vector<int>* vec) {
-	vector<int> result = vector<int>();
-	for (int i = 0; i < (*vec).size(); i++)
+void RemoveDubl(MyVector* vec) {
+	MyVector* result = new MyVector();
+	MyVector::Itterator* it = vec->head;
+	for (int i = 0; i < vec->count; i++)
 	{
 		bool isSkip = false;
-		for (int j = 0; j < result.size(); j++)
+		MyVector::Itterator* itRes = result->head;
+		for (int j = 0; j < result->count; j++)
 		{
-			if ((*vec)[i] == result[j])
+			if (it->value == itRes->value)
 			{
 				isSkip = true;
 				break;
 			}
 		}
 		if (isSkip)
+		{
+			it = it->next;
 			continue;
-		result.push_back((*vec)[i]);
+		}
+		result->AddValue(it->value);
+		it = it->next;
 	}
-	*vec = result;
+	*vec = *result;
 }
 
 void ShowLast5Element() {
-	vector<int> vec = vector<int>();
+	MyVector vec = MyVector();
 	for (int i = 0; i < 5; i++)
 	{
-		vec.push_back(1);
-		vec.push_back(i);
+		vec.AddValue(1);
+		vec.AddValue(i);
 	}
-	for (int i = 0; i < vec.size(); i++)
-		cout << vec[i] << ' ';
+	MyVector::Itterator* it = vec.head;
+	for (int i = 0; i < vec.count; i++)
+	{
+		if (i != 0)
+			it = it->next;
+		cout << it->value << ' ';
+	}
 	cout << '\n';
 	cout << FindLast5Element(&vec);
 }
 
-int FindLast5Element(vector<int>* vec) {
-	auto a = vec->end();
-	for (int i = 0; i < 5; i++)
-		a--;
-	return *a;
+int FindLast5Element(MyVector* vec) {
+	MyVector::Itterator& it = *vec->head;
+	for (int i = 0; i < vec->count - 5; i++)
+		it = *it.next;
+	return it.value;
 }

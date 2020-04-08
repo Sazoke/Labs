@@ -1,10 +1,2 @@
 ﻿  Matrix.cpp
-C:\Users\solov\source\repos\Labs-C--\lab1\Matrix\Matrix\Matrix.cpp(81,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\solov\source\repos\Labs-C--\lab1\Matrix\Matrix\Matrix.cpp(85,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\solov\source\repos\Labs-C--\lab1\Matrix\Matrix\Matrix.cpp(91,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\solov\source\repos\Labs-C--\lab1\Matrix\Matrix\Matrix.cpp(94,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\solov\source\repos\Labs-C--\lab1\Matrix\Matrix\Matrix.cpp(116,20): warning C4018: <: несоответствие типов со знаком и без знака
-  Matrix3x3.cpp
-  MatrixNxN.cpp
-  Создание кода...
   Matrix.vcxproj -> C:\Users\solov\source\repos\Labs-C--\lab1\Matrix\Debug\Matrix.exe
