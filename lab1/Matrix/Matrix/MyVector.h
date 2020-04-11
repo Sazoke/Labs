@@ -17,6 +17,5 @@ public:
 
 	MyVector();
 	void AddValue(int);
-	void RemoveAt(int);
 };
 

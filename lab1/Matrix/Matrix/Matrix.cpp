@@ -11,8 +11,6 @@ void ShowMatrix3x3();
 void ShowMatrixNxN();
 void ShowRemove();
 void ShowLast5Element();
-void RemoveDubl(MyVector*);
-int FindLast5Element(MyVector*);
 
 int main()
 {
@@ -71,77 +69,56 @@ void ShowMatrixNxN() {
 }
 
 void ShowRemove() {
-	MyVector vec = MyVector();
+	MyVector* vec = new MyVector();
 	for (int i = 0; i < 5; i++)
 	{
-		vec.AddValue(1);
-		vec.AddValue(i);
+		vec->AddValue(1);
+		vec->AddValue(i);
 	}
-	MyVector::Itterator* it = vec.head;
-	for (int i = 0; i < vec.count; i++)
-	{
-		if (i != 0)
-			it = it->next;
-		cout << it->value << ' ';
-	}
-	cout << '\n';
-	RemoveDubl(&vec);
-	MyVector::Itterator& itRes = *vec.head;
-	for (int i = 0; i < vec.count; i++)
-	{
-		if (i != 0)
-			itRes = *itRes.next;
-		cout << itRes.value << ' ';
-	}
-}
-
-void RemoveDubl(MyVector* vec) {
-	MyVector* result = new MyVector();
 	MyVector::Itterator* it = vec->head;
+	MyVector* newVector = new MyVector();
+
 	for (int i = 0; i < vec->count; i++)
 	{
 		bool isSkip = false;
-		MyVector::Itterator* itRes = result->head;
-		for (int j = 0; j < result->count; j++)
+		MyVector::Itterator* newIt = newVector->head;
+		for (int j = 0; j < newVector->count; j++)
 		{
-			if (it->value == itRes->value)
+			if (it->value == newIt->value)
 			{
 				isSkip = true;
 				break;
 			}
+			newIt = newIt->next;
 		}
 		if (isSkip)
 		{
 			it = it->next;
 			continue;
 		}
-		result->AddValue(it->value);
+		newVector->AddValue(it->value);
 		it = it->next;
 	}
-	*vec = *result;
 }
 
 void ShowLast5Element() {
 	MyVector vec = MyVector();
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		vec.AddValue(1);
 		vec.AddValue(i);
 	}
 	MyVector::Itterator* it = vec.head;
-	for (int i = 0; i < vec.count; i++)
-	{
-		if (i != 0)
-			it = it->next;
-		cout << it->value << ' ';
-	}
-	cout << '\n';
-	cout << FindLast5Element(&vec);
-}
 
-int FindLast5Element(MyVector* vec) {
-	MyVector::Itterator& it = *vec->head;
-	for (int i = 0; i < vec->count - 5; i++)
-		it = *it.next;
-	return it.value;
+	int count = 0;
+	MyVector::Itterator* last5Element = nullptr;
+	while (it != vec.tail)
+	{
+		count++;
+		it = it->next;
+		if (count == 5)
+			last5Element = vec.head;
+		if (count > 5)
+			last5Element = last5Element->next;
+	}
+	int value = last5Element->value;
 }

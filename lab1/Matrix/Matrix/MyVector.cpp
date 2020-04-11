@@ -29,20 +29,3 @@ void MyVector::AddValue(int number) {
 	}
 	count++;
 }
-
-void MyVector::RemoveAt(int number) {
-	if (number == 0) {
-		Itterator* removedItem = head;
-		head = head->next;
-		delete removedItem;
-	}
-	else {
-		Itterator& it = *head;
-		for (int i = 0; i < number - 1; i++)
-			it = *it.next;
-		Itterator* removedItem = (&it)->next;
-		(&it)->next = (&it)->next->next;
-		delete removedItem;
-	}
-	count--;
-}
