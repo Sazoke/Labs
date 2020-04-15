@@ -1,5 +1,4 @@
 #include "BinTree.h"
-void AddNewValue(NodeTree*, int);
 
 void BinTree::AddValue(int value) {
 	if (head == nullptr)
@@ -24,4 +23,25 @@ void AddNewValue(NodeTree* node, int value)
 			node->more = new NodeTree(value);
 		else
 			AddNewValue(node->more, value);
+}
+
+bool BinTree::Contains(int value) {
+	if (head == nullptr)
+		return false;
+	return FindValue(head, value);
+}
+
+bool FindValue(NodeTree* node, int value) {
+	if (node->value == value)
+		return true;
+	if (value < node->value)
+		if (node->less == nullptr)
+			return false;
+		else
+			FindValue(node->less, value);
+	else if (value > node->value)
+		if (node->more == nullptr)
+			return false;
+		else
+			FindValue(node->more, value);
 }
