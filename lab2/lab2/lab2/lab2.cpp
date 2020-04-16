@@ -5,4 +5,5 @@
 #include"BinTree.h"
 int main()
 {
+	auto a = new NodeTree();
 }

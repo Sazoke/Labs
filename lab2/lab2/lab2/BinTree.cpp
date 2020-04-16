@@ -1,47 +1,62 @@
 #include "BinTree.h"
 
-void BinTree::AddValue(int value) {
-	if (head == nullptr)
-	{
-		head = new NodeTree(value);
-		return;
-	}
+BinTree::BinTree(int value) {
+	head = new NodeTree(value);
+}
+
+BinTree::BinTree() :BinTree(0) {};
+
+void BinTree::Insert(int value) {
 	AddNewValue(head, value);
 }
 
-void AddNewValue(NodeTree* node, int value)
+void BinTree::AddNewValue(NodeTree* node, int value)
 {
-	if (node->value == value)
+	if (node->GetValue() == value)
 		return;
-	if (value < node->value)
-		if (node->less == nullptr)
-			node->less = new NodeTree(value);
+	if (value < node->GetValue())
+		if (node->GetLessNode() == nullptr)
+			node->SetLessNode(new NodeTree(value));
 		else
-			AddNewValue(node->less, value);
-	else if (value > node->value)
-		if (node->more == nullptr)
-			node->more = new NodeTree(value);
+			AddNewValue(node->GetLessNode(), value);
+	else if (value > node->GetValue())
+		if (node->GetMoreNode() == nullptr)
+			node->SetMoreNode(new NodeTree(value));
 		else
-			AddNewValue(node->more, value);
+			AddNewValue(node->GetMoreNode(), value);
 }
 
-bool BinTree::Contains(int value) {
-	if (head == nullptr)
-		return false;
+NodeTree* BinTree::Find(int value) {
 	return FindValue(head, value);
 }
 
-bool FindValue(NodeTree* node, int value) {
-	if (node->value == value)
-		return true;
-	if (value < node->value)
-		if (node->less == nullptr)
-			return false;
+NodeTree* BinTree::FindValue(NodeTree* node, int value) {
+	if (node->GetValue() == value)
+		return node;
+	if (value < node->GetValue())
+		if (node->GetLessNode() == nullptr)
+			return nullptr;
 		else
-			FindValue(node->less, value);
-	else if (value > node->value)
-		if (node->more == nullptr)
-			return false;
+			FindValue(node->GetLessNode(), value);
+	else if (value > node->GetValue())
+		if (node->GetMoreNode() == nullptr)
+			return nullptr;
 		else
-			FindValue(node->more, value);
+			FindValue(node->GetMoreNode(), value);
+}
+
+BinTree::~BinTree() {
+	RemoveNode(head);
+}
+
+void BinTree::RemoveNode(NodeTree* node) {
+	if (node->GetLessNode() == nullptr)
+	{
+		if (node->GetMoreNode() == nullptr)
+			delete node;
+		else
+			RemoveNode(node->GetMoreNode());
+	}
+	else
+		RemoveNode(node->GetLessNode());
 }

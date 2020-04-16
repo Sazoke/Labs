@@ -1,14 +1,19 @@
 #pragma once
 #include"NodeTree.h"
-void AddNewValue(NodeTree*, int);
-bool FindValue(NodeTree*, int);
 
 class BinTree
 {
 private:
 	NodeTree* head;
+	void AddNewValue(NodeTree*, int);
+	NodeTree* FindValue(NodeTree*, int);
+	void RemoveNode(NodeTree*);
 public:
-	void AddValue(int);
-	bool Contains(int);
+	BinTree();
+	BinTree(int);
+	~BinTree();
+
+	void Insert(int);
+	NodeTree* Find(int);
 };
 
