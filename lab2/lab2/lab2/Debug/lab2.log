@@ -1,6 +1,2 @@
-﻿  BinTree.cpp
-  NodeTree.cpp
-  lab2.cpp
-  Создание кода...
-C:\Users\solov\source\repos\Labs-C--\lab2\lab2\lab2\BinTree.cpp(46): warning C4715: BinTree::FindValue: значение возвращается не при всех путях выполнения
+﻿  lab2.cpp
   lab2.vcxproj -> C:\Users\solov\source\repos\Labs-C--\lab2\lab2\Debug\lab2.exe
