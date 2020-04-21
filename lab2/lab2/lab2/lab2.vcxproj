@@ -150,10 +150,12 @@
     <ClCompile Include="BinTree.cpp" />
     <ClCompile Include="lab2.cpp" />
     <ClCompile Include="NodeTree.cpp" />
+    <ClCompile Include="TreeMaker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BinTree.h" />
     <ClInclude Include="NodeTree.h" />
+    <ClInclude Include="TreeMaker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
