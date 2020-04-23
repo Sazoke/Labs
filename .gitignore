@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+lab2/lab2/.vs/lab2/v16/Browse.VC.db
+lab2/lab2/.vs/lab2/v16/Browse.VC.opendb
+lab2/lab2/.vs/lab2/v16/ipch/AutoPCH/8d50490b1efad97e/BINTREE.ipch
+lab2/lab2/.vs/lab2/v16/ipch/AutoPCH/dc83126f522b5b1b/NODETREE.ipch
+lab2/lab2/.vs/lab2/v16/ipch/AutoPCH/dc83126f522b5b1b/NODETREE.ipch
+*.ipch
