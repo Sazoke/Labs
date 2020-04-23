@@ -11,18 +11,24 @@ int BSearchNotRecursion(int*, int, int, int);
 int main()
 {
 	int arr[100];
-	for (int i = 0; i < 100; i++)
-		arr[i] = rand() % (21) - 10;
-	cout << Search(begin(arr), end(arr), -6);
+	for (int i = 0; i < 10000; i++)
+		arr[i] = rand() % (2001) - 1000;
+	int start = clock();
+	cout << "Find element -6, index = " << Search(begin(arr), end(arr), -6);
 	cout << '\n';
-	for (int i = 0; i < 100; i++)
+	cout << "Time of basic finding = " << clock() - start;
+	cout << '\n';
+	for (int i = 0; i < 50; i++)
 		cout << arr[i] << ' ';
 	cout << '\n';
-	QuickSortRecursion(begin(arr), 0, 99);
-	for (int i = 0; i < 100; i++)
+	QuickSortRecursion(begin(arr), 0, 9999);
+	for (int i = 0; i < 50; i++)
 		cout << arr[i] << ' ';
 	cout << '\n';
-	cout << BSearchNotRecursion(begin(arr), -1, 100, -6);
+	start = clock();
+	cout << "Find element -6, index = " << BSearchNotRecursion(begin(arr), -1, 10000, -6);
+	cout << '\n';
+	cout << "Time of binary finding = " << clock() - start;
 }
 
 int Search(int* begin, int* end, int value) {
