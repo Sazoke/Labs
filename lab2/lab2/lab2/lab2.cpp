@@ -23,9 +23,9 @@ BinTree* CreateMinimalBST(int* begin, int left, int right) {
 	else
 		tree->Insert(*(begin + (right + left) / 2));
 	if (length % 2 == 1)
-		CreateMinimalBST(begin, 0, ((right - left) - 1) / 2);
+		CreateMinimalBST(begin, left, ((right + left) - 1) / 2);
 	else
-		CreateMinimalBST(begin, 0, (right - left) / 2);
-	CreateMinimalBST(begin, length / 2 + 1, right);
+		CreateMinimalBST(begin, left, (right + left) / 2);
+	CreateMinimalBST(begin, (right + left) / 2 + 1, right);
 	return tree;
 }
