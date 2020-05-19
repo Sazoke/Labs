@@ -2,6 +2,7 @@
 class MatrixBase
 {
 protected:
+	int** matrix = nullptr;
 	MatrixBase(unsigned int iSize);
 	unsigned int m_size;
 public:
@@ -10,6 +11,5 @@ public:
 	virtual int& elementAddress(unsigned int i, unsigned int j);
 	virtual void operator *=(int iMult);
 	virtual void operator +=(MatrixBase iAdd);
-	virtual void operator <<(const MatrixBase& iMatrix);
 };
 
