@@ -20,8 +20,8 @@ int& MatrixBase::elementAddress(unsigned int i, unsigned int j) {
 }
 
 void MatrixBase::operator*=(int iMult) {
-	for (int i = 0; i < m_size; i++)
-		for (int j = 0; j < m_size; j++)
+	for (unsigned int i = 0; i < m_size; i++)
+		for (unsigned int j = 0; j < m_size; j++)
 			matrix[i][j] *= iMult;
 }
 
@@ -36,12 +36,12 @@ void MatrixBase::operator+=(MatrixBase iMatrix) {
 			matrix[i][j] += iMatrix.matrix[i][j];
 }
 
-std::ostream& operator<<(std::ostream& os, const MatrixBase& iMatrix)
+std::ostream& operator<<(std::ostream& os, MatrixBase& iMatrix)
 {
-	for (unsigned int i = 0; i < iMatrix.m_size; i++)
+	for (unsigned int i = 0; i < iMatrix.size(); i++)
 	{
-		for (unsigned int j = 0; j < iMatrix.m_size; j++)
-			os << iMatrix.matrix[i][j] << ' ';
+		for (unsigned int j = 0; j < iMatrix.size(); j++)
+			os << iMatrix.element(i, j) << ' ';
 		os << '\n';
 	}
 	return os;
