@@ -11,11 +11,11 @@ const unsigned int MatrixBase::size() {
 	return m_size;
 }
 
-int MatrixBase::element(unsigned int i, unsigned int j) {
+const int MatrixBase::element(unsigned int i, unsigned int j) {
 	return matrix[i][j];
 }
 
-int& MatrixBase::elementAddress(unsigned int i, unsigned int j) {
+const int& MatrixBase::elementAddress(unsigned int i, unsigned int j) {
 	return matrix[i][j];
 }
 
@@ -36,7 +36,7 @@ void MatrixBase::operator+=(MatrixBase iMatrix) {
 			matrix[i][j] += iMatrix.matrix[i][j];
 }
 
-std::ostream& operator<<(std::ostream& os, MatrixBase& iMatrix)
+std::ofstream& operator<<(std::ofstream& os, MatrixBase& iMatrix)
 {
 	for (unsigned int i = 0; i < iMatrix.size(); i++)
 	{
