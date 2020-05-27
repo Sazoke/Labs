@@ -2,27 +2,16 @@
 
 MatrixBase::MatrixBase(unsigned int iSize) {
 	m_size = iSize;
-	matrix = new int* [m_size];
-	for (unsigned int i = 0; i < m_size; i++)
-		matrix[i] = new int[m_size];
 }
 
-const unsigned int MatrixBase::size() {
+unsigned int MatrixBase::size() const {
 	return m_size;
-}
-
-const int MatrixBase::element(unsigned int i, unsigned int j) {
-	return matrix[i][j];
-}
-
-const int& MatrixBase::elementAddress(unsigned int i, unsigned int j) {
-	return matrix[i][j];
 }
 
 void MatrixBase::operator*=(int iMult) {
 	for (unsigned int i = 0; i < m_size; i++)
 		for (unsigned int j = 0; j < m_size; j++)
-			matrix[i][j] *= iMult;
+			elementAddress(i, j) *= iMult;
 }
 
 void MatrixBase::operator+=(MatrixBase iMatrix) {
@@ -33,7 +22,7 @@ void MatrixBase::operator+=(MatrixBase iMatrix) {
 		size = m_size;
 	for (unsigned int i = 0; i < size; i++)
 		for (unsigned int j = 0; j < size; j++)
-			matrix[i][j] += iMatrix.matrix[i][j];
+			elementAddress(i, j) += iMatrix.element(i, j);
 }
 
 std::ofstream& operator<<(std::ofstream& os, MatrixBase& iMatrix)
